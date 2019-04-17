@@ -66,7 +66,7 @@ int Codeblock::do_gen_file_list(const char *file_path)
     char cmd[1024];
 
     memset(cmd, 0x00, sizeof(cmd));
-    sprintf(cmd, "find . -name *.cpp -o -name *.c -o -name *.h > %s", file_path);
+    sprintf(cmd, "find . -name '*.cpp' -o -name '*.c' -o -name '*.h' > %s", file_path);
     system(cmd);
 }
 
