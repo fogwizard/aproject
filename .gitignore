@@ -32,4 +32,5 @@
 *.app
 *.txt
 *.depend
+*.layout
 gen_project.cbp
