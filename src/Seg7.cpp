@@ -91,15 +91,6 @@ int Seg7::do_seg7(void)
     auto index6 = distance(f.begin(),find(f.begin(), f.end(), 'g'));
     auto index7 = distance(f.begin(),find(f.begin(), f.end(), 'h'));
 
-    cout << "a->" << (index0) << endl;
-    cout << "b->" << (index1) << endl;
-    cout << "c->" << (index2) << endl;
-    cout << "d->" << (index3) << endl;
-    cout << "e->" << (index4) << endl;
-    cout << "f->" << (index5) << endl;
-    cout << "g->" << (index6) << endl;
-    cout << "h->" << (index7) << endl;
-
     seg_t seg;
 
     seg.Sega = 1 << index0;
@@ -110,6 +101,15 @@ int Seg7::do_seg7(void)
     seg.Segf = 1 << index5;
     seg.Segg = 1 << index6;
     seg.Segh = 1 << index7;
+
+    cout << "a->" << (index0) << " seg=" << (int)(seg.Sega) <<  endl;
+    cout << "b->" << (index1) << " seg=" << (int)(seg.Segb) <<  endl;
+    cout << "c->" << (index2) << " seg=" << (int)(seg.Segc) <<  endl;
+    cout << "d->" << (index3) << " seg=" << (int)(seg.Segd) <<  endl;
+    cout << "e->" << (index4) << " seg=" << (int)(seg.Sege) <<  endl;
+    cout << "f->" << (index5) << " seg=" << (int)(seg.Segf) <<  endl;
+    cout << "g->" << (index6) << " seg=" << (int)(seg.Segg) <<  endl;
+    cout << "h->" << (index7) << " seg=" << (int)(seg.Segh) <<  endl;
 
     for(auto i = 0; i < 10; i++) {
         fout.push_back(get_number_seg(i, seg));
