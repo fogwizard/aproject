@@ -37,7 +37,9 @@
 		<Unit filename="external/tinyxml2/tinyxml2.cpp" />
 		<Unit filename="external/tinyxml2/tinyxml2.h" />
 		<Unit filename="include/Codeblock.h" />
+		<Unit filename="include/Seg7.h" />
 		<Unit filename="src/Codeblock.cpp" />
+		<Unit filename="src/Seg7.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />

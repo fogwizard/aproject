@@ -21,43 +21,42 @@ Codeblock::~Codeblock()
 
 int Codeblock::do_gen_cbp_file(const char *file_path)
 {
-        char line[1024]={0};
-        fstream fin;
+    char line[1024]= {0};
+    fstream fin;
 
-        fin.open(file_path,ios::in);
-        if(!fin){
-            cout << "file not exist";
-            return -1;
-        }
-        const char* declaration ="<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>";
-        XMLDocument doc;
-        doc.Parse(declaration);
+    fin.open(file_path,ios::in);
+    if(!fin) {
+        cout << "file not exist";
+        return -1;
+    }
+    const char* declaration ="<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>";
+    XMLDocument doc;
+    doc.Parse(declaration);
 
-        XMLElement* root=doc.NewElement("CodeBlocks_project_file");
-        doc.InsertEndChild(root);
+    XMLElement* root=doc.NewElement("CodeBlocks_project_file");
+    doc.InsertEndChild(root);
 
-        XMLElement* FileVersion=doc.NewElement("FileVersion");
-        FileVersion->SetAttribute("major","1");
-        FileVersion->SetAttribute("minor","6");
-        root->InsertEndChild(FileVersion);
+    XMLElement* FileVersion=doc.NewElement("FileVersion");
+    FileVersion->SetAttribute("major","1");
+    FileVersion->SetAttribute("minor","6");
+    root->InsertEndChild(FileVersion);
 
-        XMLElement* project=doc.NewElement("Project");
-        root->InsertEndChild(project);
+    XMLElement* project=doc.NewElement("Project");
+    root->InsertEndChild(project);
 
-        XMLElement* option=doc.NewElement("option");
-        option->SetAttribute("title","aproject");
-        project->InsertEndChild(option);
+    XMLElement* option=doc.NewElement("option");
+    option->SetAttribute("title","aproject");
+    project->InsertEndChild(option);
 
-        while(fin.getline(line, sizeof(line)))
-        {
-            cout << line<< std::endl;
+    while(fin.getline(line, sizeof(line))) {
+        cout << line<< std::endl;
 
-            XMLElement* unit=doc.NewElement("Unit");
-            unit->SetAttribute("filename", line);
-            project->InsertEndChild(unit);
-        }
-        doc.SaveFile("gen_project.cbp");
-        return 0;
+        XMLElement* unit=doc.NewElement("Unit");
+        unit->SetAttribute("filename", line);
+        project->InsertEndChild(unit);
+    }
+    doc.SaveFile("gen_project.cbp");
+    return 0;
 }
 
 int Codeblock::do_gen_file_list(const char *file_path)
@@ -72,7 +71,7 @@ int Codeblock::do_gen_file_list(const char *file_path)
 
 int Codeblock::gen_codeblock_project_file(const char *file_path)
 {
-    if(NULL == file_path){
+    if(NULL == file_path) {
         do_gen_file_list("file_list.txt");
         do_gen_cbp_file("file_list.txt");
     } else {
